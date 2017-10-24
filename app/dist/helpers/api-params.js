@@ -33,5 +33,7 @@ export function toString(params: Object): string {
  * toQuery({user:'John',age:25}); //user=John&age=25
  */
 export function toQuery(params: Object): string {
-  return Object.keys(params).map(key => `${key}=${params[key]}`).join('&');
+  return Object.keys(params)
+    .map(key => `${key}=${params[key]}`)
+    .join('&');
 }

@@ -21,7 +21,7 @@ import createSagaMiddleware from 'redux-saga';
 import sagaFlow from './helpers/saga-flow';
 
 // Intro
-import IntroView from '~/containers/00_Intro/view';
+import RootView from '~/containers/RootView/view';
 
 /* saga */
 const sagaMiddleware = createSagaMiddleware();
@@ -72,14 +72,14 @@ const RouterFormat = (
     <div>
       <I18n translations={Locales} initialLang="zh_tw" fallbackLang="en">
         <ConnectedRouter history={history}>
-          <IntroView history={history}>
+          <RootView history={history}>
             <Switch>
-              {RootRoutes.map(({ path, component }) =>
+              {RootRoutes.map(({ path, component }) => (
                 <Route path={path} key={path} component={component} />
-              )}
-              <Redirect path="*" to="/welcome" />
+              ))}
+              <Redirect path="*" to="/" />
             </Switch>
-          </IntroView>
+          </RootView>
         </ConnectedRouter>
       </I18n>
       {DevTools ? <DevTools /> : null}
