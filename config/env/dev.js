@@ -3,7 +3,7 @@ const PROJECT_NAME = 'React Redux Start Kit';
 
 /* 專案環境 */
 const PROJECT_HOST = '127.0.0.1';
-const PROJECT_PORT = 8888;
+const PROJECT_PORT = 8889;
 
 /* 專案路徑 */
 const PROJECT_PATH = '/';

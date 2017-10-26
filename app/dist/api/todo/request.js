@@ -1,6 +1,7 @@
 /* @flow */
 import {
   TODO_GET_BY_USER,
+  TODO_GET_ALL,
   TODO_INSERT,
   TODO_UPDATE,
   TODO_DELETE
@@ -8,6 +9,11 @@ import {
 import { replace, toQuery, toString } from '~/helpers/api-params';
 
 export default {
+  [TODO_GET_ALL]: () => ({
+    method: 'get',
+    url: '/todos'
+  }),
+
   [TODO_GET_BY_USER]: (userId: number) => ({
     method: 'get',
     url: '/todos?' + toQuery({ userId })
