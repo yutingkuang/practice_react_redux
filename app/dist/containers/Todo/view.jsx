@@ -28,7 +28,6 @@ export class View extends Component<void, Props, State> {
 
   btnFetch = () => {
     this.props.dispatch(fetchByAll());
-    this.saveToState(this.props.storeData);
   };
 
   /**
@@ -37,7 +36,6 @@ export class View extends Component<void, Props, State> {
    * @return () => void
    */
   removeHandler = (id: number) => () => {
-    const todos = this.props.storeData;
     this.props.dispatch(remove(id));
   };
 
