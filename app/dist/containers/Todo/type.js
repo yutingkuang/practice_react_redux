@@ -12,7 +12,11 @@ export type ADD = 'TODO_ADD';
 /**
  * action type
  */
-export type Action = { type: GET, payload: Array<TodoItem> };
+export type Action =
+  | { type: GET, payload: Array<TodoItem> }
+  | { type: REMOVE, payload: number }
+  | { type: UPDATE, payload: TodoItem }
+  | { type: ADD, payload: string };
 
 /**
  * todo item
