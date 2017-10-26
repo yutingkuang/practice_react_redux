@@ -42,7 +42,6 @@ export class View extends Component<void, Props, State> {
   };
 
   updateHandler = () => (todo: TodoItem) => {
-    console.log('updateHandler', todo);
     this.props.dispatch(update(todo));
   };
 
