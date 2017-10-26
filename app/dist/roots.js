@@ -19,9 +19,6 @@ export const RootReducer = combineReducers(
 
 export const RootRoutes = router.sort((a, b) => b.path.length - a.path.length);
 
-console.log('RootReducer', reducer);
-console.log('RootRoutes', RootRoutes);
-
 export const RootSagas = Object.keys(saga).reduce((obj, key) => {
   obj[key] = response =>
     function*() {

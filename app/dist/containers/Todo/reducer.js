@@ -8,11 +8,9 @@ export default (state: Store = [], action: Action): Store => {
     case TODO_GET:
       return action.payload;
     case TODO_REMOVE:
-      // console.log('TODO_REMOVE', state, action);
       return state.filter(todo => todo.id !== action.payload);
     case TODO_UPDATE:
       const edit_todo = action.payload;
-      // console.log('TODO_UPDATE', state, action);
       return state.map(todo => (todo.id !== edit_todo.id ? todo : edit_todo));
     case TODO_ADD:
       let new_state = slice(0, state.length, state);
