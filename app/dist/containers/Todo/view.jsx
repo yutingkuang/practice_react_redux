@@ -77,7 +77,7 @@ export class View extends Component<void, Props, State> {
       <div styleName="container">
         <div styleName="page-header">
           <h1 styleName="text-center">
-            todos
+            todos<br />
             <button styleName="btn btn-sm btn-default" onClick={this.btnFetch}>
               Fetch
             </button>
