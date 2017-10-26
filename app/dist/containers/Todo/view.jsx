@@ -39,7 +39,7 @@ export class View extends Component<void, Props, State> {
     this.props.dispatch(remove(id));
   };
 
-  updateHandler = () => (todo: TodoItem) => {
+  updateHandler = (todo: TodoItem) => {
     this.props.dispatch(update(todo));
   };
 
@@ -93,7 +93,7 @@ export class View extends Component<void, Props, State> {
                   key={`todo-item-${todo.id}`}
                   todo={todo}
                   removeHandler={this.removeHandler(todo.id)}
-                  updateHandler={this.updateHandler()}
+                  updateHandler={this.updateHandler}
                 />
               ))
             ) : (
