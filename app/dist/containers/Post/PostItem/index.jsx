@@ -12,7 +12,12 @@ export default class View extends PureComponent {
           #{index} {post.title}
           <span styleName="pull-right">By {post.userId}</span>
         </div>
-        <div styleName="panel-footer">{post.body}</div>
+        <div styleName="panel-footer">
+          {post.body}
+          <span styleName="pull-right">
+            <a href="/post/1/comments">...detail</a>
+          </span>
+        </div>
       </div>
     );
   }

@@ -37,7 +37,6 @@ export function _validate(api: string, ...args: Array<any>): void {
 export function fetchApi(api: string, ...args: Array<any>): SagaAction {
   /* 錯誤檢查 */
   _validate(api, ...args);
-  // console.log('fetchApi', api, args);
   /* 撈出指定的 request */
   const { method, url, body = null } = apiSet[api](...args);
   /* 產出 saga action 格式 */

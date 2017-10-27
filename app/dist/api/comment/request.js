@@ -7,4 +7,5 @@ export default {
     method: 'get',
     url: '/comments?' + toQuery({ postId })
   })
+  // /posts/1/comments
 };
