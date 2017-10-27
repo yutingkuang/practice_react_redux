@@ -51,4 +51,4 @@ type MatchProps = {
   }
 };
 
-export type Props = DispatchProps & StoreProps & MatchProps;
+export type Props = DispatchProps & StoreProps<Store> & MatchProps;
