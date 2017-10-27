@@ -15,7 +15,7 @@ export default class View extends PureComponent {
         <div styleName="panel-footer">
           {post.body}
           <span styleName="pull-right">
-            <a href="/post/1/comments">...detail</a>
+            <a href={`/post/${post.id}/comments`}>...detail</a>
           </span>
         </div>
       </div>

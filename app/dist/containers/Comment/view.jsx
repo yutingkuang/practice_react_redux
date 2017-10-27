@@ -16,7 +16,7 @@ import PostComp from '../Post/PostItem';
 
 /* helper */
 import { ObjectEqual } from '~/helpers/equal';
-import { compose } from 'ramda';
+import { compose, slice } from 'ramda';
 
 /* type */
 import type { Props, State } from './type';
@@ -71,9 +71,11 @@ export class View extends Component<void, Props, State> {
         </div>
         <h4>Comment</h4>
         <div>
-          {comments.map((c, i) => (
-            <CommentComp key={`comment-item-${c.id}`} comment={c} index={i} />
-          ))}
+          {comments
+            .slice(0, 10)
+            .map((c, i) => (
+              <CommentComp key={`comment-item-${c.id}`} comment={c} index={i} />
+            ))}
         </div>
       </div>
     );
