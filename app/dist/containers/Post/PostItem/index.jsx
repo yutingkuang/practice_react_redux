@@ -7,7 +7,7 @@ export default class View extends PureComponent {
   render() {
     const { post, index } = this.props;
     return (
-      <div styleName="panel panel-info">
+      <div styleName="panel panel-default">
         <div styleName="panel-body">
           #{index} {post.title}
           <span styleName="pull-right">By {post.userId}</span>
