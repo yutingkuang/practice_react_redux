@@ -15,7 +15,7 @@ import PostComp from './PostItem';
 
 /* helper */
 import { ObjectEqual } from '~/helpers/equal';
-import { compose } from 'ramda';
+import { compose, times, identity } from 'ramda';
 
 /* type */
 import type { Props, State, Post } from './type';
@@ -30,7 +30,26 @@ export class View extends Component<void, Props, State> {
       nowPage: 1,
       pages: [],
       nowList: []
-    }
+    },
+    perItemList: [5, 10, 25, 50]
+  };
+
+  setPerPage = (perItem: number) => () => {
+    const { posts } = this.state;
+
+    this.setState({
+      pagination: {
+        perItem,
+        pages: times(
+          identity,
+          posts.length % perItem === 0
+            ? posts.length / perItem
+            : parseInt(posts.length / perItem + 1)
+        ),
+        nowPage: 1,
+        nowList: posts.slice(0, perItem)
+      }
+    });
   };
 
   setPage = (n: number) => () => {
@@ -78,11 +97,29 @@ export class View extends Component<void, Props, State> {
   }
 
   render() {
-    const { pagination: { pages, nowPage, nowList, perItem } } = this.state;
-    // console.log('nowPage',nowPage);
+    const {
+      pagination: { pages, nowPage, nowList, perItem },
+      perItemList
+    } = this.state;
+
     return (
       <div styleName="container">
         <div styleName="page-header">
+          <div styleName="pull-right">
+            <nav aria-label="Page navigation">
+              <ul styleName="pagination paging perpage">
+                {perItemList.map(n => (
+                  <li key={`${n}-per-page`}>
+                    <a
+                      styleName={perItem === n ? 'active' : ''}
+                      onClick={this.setPerPage(n)}>
+                      {n}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </div>
           <h1 styleName="text-center">Post</h1>
           <div>
             {nowList.map((post, i) => (
@@ -93,7 +130,7 @@ export class View extends Component<void, Props, State> {
               />
             ))}
           </div>
-          <div>
+          <div styleName="center">
             <nav aria-label="Page navigation">
               <ul styleName="pagination paging">
                 <li styleName={nowPage === 1 ? 'hidden' : ''}>

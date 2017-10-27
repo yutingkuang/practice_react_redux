@@ -41,7 +41,8 @@ export type Store = {
  */
 export type State = {
   posts: Array<Post>,
-  pagination: Page
+  pagination: Page,
+  perItemList: Array<number>
 };
 
 export type Props = DispatchProps & StoreProps<Store>;
