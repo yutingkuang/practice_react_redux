@@ -29,21 +29,21 @@ export function get(data: Array<TodoItem>): Action {
  * @param id  {number}  [todo's id]
  * @returns {*}
  */
-export function remove(id: number) {
+export function remove(id: number): Action {
   return {
     type: TODO_REMOVE,
     payload: id
   };
 }
 
-export function update(todo: TodoItem) {
+export function update(todo: TodoItem): Action {
   return {
     type: TODO_UPDATE,
     payload: todo
   };
 }
 
-export function add(value: string) {
+export function add(value: string): Action {
   return {
     type: TODO_ADD,
     payload: value

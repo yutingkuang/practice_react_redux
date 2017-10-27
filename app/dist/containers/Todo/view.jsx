@@ -28,7 +28,6 @@ export class View extends Component<void, Props, State> {
 
   btnFetch = () => {
     this.props.dispatch(fetchByAll());
-    this.saveToState(this.props.storeData);
   };
 
   /**
@@ -37,19 +36,17 @@ export class View extends Component<void, Props, State> {
    * @return () => void
    */
   removeHandler = (id: number) => () => {
-    const todos = this.props.storeData;
-    this.props.dispatch([remove(id)]);
+    this.props.dispatch(remove(id));
   };
 
-  updateHandler = () => (todo: TodoItem) => {
-    console.log('updateHandler', todo);
-    this.props.dispatch([update(todo)]);
+  updateHandler = (todo: TodoItem) => {
+    this.props.dispatch(update(todo));
   };
 
   insertHandler = (e: any) => {
     if (e.charCode === 13) {
       /* 按下 enter 執行 */
-      this.props.dispatch([add(e.target.value)]);
+      this.props.dispatch(add(e.target.value));
       e.target.value = '';
     }
   };
@@ -78,7 +75,7 @@ export class View extends Component<void, Props, State> {
       <div styleName="container">
         <div styleName="page-header">
           <h1 styleName="text-center">
-            todos
+            todos<br />
             <button styleName="btn btn-sm btn-default" onClick={this.btnFetch}>
               Fetch
             </button>
@@ -96,7 +93,7 @@ export class View extends Component<void, Props, State> {
                   key={`todo-item-${todo.id}`}
                   todo={todo}
                   removeHandler={this.removeHandler(todo.id)}
-                  updateHandler={this.updateHandler()}
+                  updateHandler={this.updateHandler}
                 />
               ))
             ) : (
