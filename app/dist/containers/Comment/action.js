@@ -19,14 +19,14 @@ export function fetchCommentByPostId(id: number) {
   return fetchApi(COMMENT_GET_BY_ID, id);
 }
 
-export function getComment(data: Array<Comment>): CommentAction {
+export function saveComment(data: Array<Comment>): CommentAction {
   return {
     type: COMMENTS_GET,
     payload: data
   };
 }
 
-export function getPost(data: Post): PostAction {
+export function savePost(data: Post): PostAction {
   return {
     type: POST_GET_BY_ID,
     payload: data

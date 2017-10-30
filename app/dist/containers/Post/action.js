@@ -13,7 +13,7 @@ export function fetchPost() {
   return fetchApi(POST_GET_ALL);
 }
 
-export function get(data: Array<Post>): Action {
+export function save(data: Array<Post>): Action {
   return {
     type: POST_GET,
     payload: data

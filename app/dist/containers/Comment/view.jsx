@@ -71,11 +71,9 @@ export class View extends Component<void, Props, State> {
         </div>
         <h4>Comment</h4>
         <div>
-          {comments
-            .slice(0, 10)
-            .map((c, i) => (
-              <CommentComp key={`comment-item-${c.id}`} comment={c} index={i} />
-            ))}
+          {slice(0, 10, comments).map((c, i) => (
+            <CommentComp key={`comment-item-${c.id}`} comment={c} index={i} />
+          ))}
         </div>
       </div>
     );
