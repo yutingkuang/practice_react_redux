@@ -1,8 +1,9 @@
 /* @flow */
 import React from 'react';
 import { applyStylesInline } from '../../../core/css-module';
+import type { Props } from './type.js';
 
-export const CommentComp: any = (props: any) => {
+export const CommentComp: any = (props: Props) => {
   const { comment } = props;
   return (
     <div styleName="panel panel-info">

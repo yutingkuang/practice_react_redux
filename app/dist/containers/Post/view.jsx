@@ -35,9 +35,7 @@ export class View extends Component<void, Props, State> {
   };
 
   setPerPage = (perItem: number) => () => {
-    const { posts } = this.state;
-
-    this.setState({
+    this.setState(({ posts }) => ({
       pagination: {
         perItem,
         pages: times(
@@ -49,7 +47,7 @@ export class View extends Component<void, Props, State> {
         nowPage: 1,
         nowList: posts.slice(0, perItem)
       }
-    });
+    }));
   };
 
   setPage = (n: number) => () => {
@@ -71,19 +69,13 @@ export class View extends Component<void, Props, State> {
   };
 
   nextPage = () => {
-    const { pagination } = this.state;
-    pagination.nowPage < pagination.pages.length
-      ? this.setPage(pagination.nowPage + 1)()
-      : null;
-  };
-
-  saveToState = (state: State) => {
-    this.setState(state);
+    const { pagination: { nowPage, pages } } = this.state;
+    nowPage < pages.length ? this.setPage(nowPage + 1)() : null;
   };
 
   componentWillReceiveProps(nextProps: any) {
     /* 資料有變更的時候更新 */
-    this.saveToState(nextProps.storeData);
+    this.setState(nextProps.storeData);
   }
 
   shouldComponentUpdate(nextProps: any, nextState: State) {
