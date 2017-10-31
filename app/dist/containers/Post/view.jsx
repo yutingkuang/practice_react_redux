@@ -73,9 +73,9 @@ export class View extends Component<void, Props, State> {
     nowPage < pages.length ? this.setPage(nowPage + 1)() : null;
   };
 
-  componentWillReceiveProps(nextProps: any) {
-    /* 資料有變更的時候更新 */
-    this.setState(nextProps.storeData);
+  componentWillReceiveProps({ storeData }: Props) {
+    const { pagination: { perItem } } = this.state;
+    this.setState(storeData, this.setPerPage(perItem));
   }
 
   shouldComponentUpdate(nextProps: any, nextState: State) {

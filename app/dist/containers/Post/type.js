@@ -32,8 +32,7 @@ export type Page = {
  * store type
  */
 export type Store = {
-  posts: Array<Post>,
-  pagination: Page
+  posts: Array<Post>
 };
 
 /**
