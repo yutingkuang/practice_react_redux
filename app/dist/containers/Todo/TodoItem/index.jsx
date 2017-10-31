@@ -7,15 +7,10 @@ import type { State } from './type';
 
 @applyStyles(style)
 export default class View extends PureComponent<void, Props, State> {
-  state: State;
+  state: State = {
+    modify: false
+  };
   props: Props;
-
-  constructor(props: Props, context: any) {
-    super(props, context);
-    this.state = {
-      modify: false
-    };
-  }
 
   /**
    * input element onKeyPress event
@@ -47,12 +42,7 @@ export default class View extends PureComponent<void, Props, State> {
 
   render() {
     // console.log('todocom',this.props);
-    const {
-      todo,
-      todo: { title, completed },
-      removeHandler,
-      updateHandler
-    } = this.props;
+    const { todo, todo: { title, completed }, removeHandler } = this.props;
     const { modify } = this.state;
     return (
       <li>
