@@ -1,4 +1,8 @@
 /* @flow */
+export type OtherUsers = {
+  results: Array<OtherUser>
+};
+
 export type OtherUser = {
   name: {
     title: string,
