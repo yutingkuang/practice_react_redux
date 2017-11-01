@@ -38,13 +38,46 @@ export function fetchApi(api: string, ...args: Array<any>): SagaAction {
   /* 錯誤檢查 */
   _validate(api, ...args);
   /* 撈出指定的 request */
-  const { method, url, body = null } = apiSet[api](...args);
+  const { method, url, body = null, other } = apiSet[api](...args);
+  console.log('fetchApi', api, other);
+  if (other) return fetchOtherApi(api, args);
   /* 產出 saga action 格式 */
   return {
     type: SAGA_ACTION,
     payload: {
       api,
       stream: fetch.bind(null, API_URL + url, {
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        mode: 'cors',
+        method,
+        body
+      })
+    }
+  };
+}
+
+/**
+ * 從設定的 request，帶入 saga action
+ * 支援多個API來源 或 接外部API
+ * @param api   [API 代碼]
+ * @param args  [傳入request 的參數]
+ * @returns {{type: ACTION, payload: {api: string, stream: Promise<*>}}}
+ */
+export function fetchOtherApi(api: string, ...args: Array<any>): SagaAction {
+  console.log('fetchOtherApi', api);
+  /* 錯誤檢查 */
+  _validate(api, ...args);
+  /* 撈出指定的 request */
+  const { method, url, body = null } = apiSet[api](...args);
+  /* 產出 saga action 格式 */
+  return {
+    type: SAGA_ACTION,
+    payload: {
+      api,
+      stream: fetch.bind(null, url, {
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json'

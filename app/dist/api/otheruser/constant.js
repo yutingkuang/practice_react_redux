@@ -1,0 +1,2 @@
+/* @flow */
+export const OTHER_USER_GET_10_WITH_PHOTO = 'OTHER_USER_GET_10_WITH_PHOTO';
