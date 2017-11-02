@@ -8,6 +8,7 @@ export const MugShot: any = (props: any) => {
   return (
     <div styleName="mugshot">
       <img src={photo} styleName="img-rounded" alt={name} />
+      <span>{name}</span>
     </div>
   );
 };
