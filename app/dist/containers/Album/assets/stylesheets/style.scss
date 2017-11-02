@@ -1,0 +1,20 @@
+.children-list {
+  padding: 10%;
+  .album {
+    display: inline;
+    position: relative;
+    margin: 50px;
+    .icon {
+      font-size: 150px;
+      color: darkturquoise;
+    }
+    .album-title {
+      position: absolute;
+      left: -10px;
+      top: -100px;
+      color: white;
+      font-size: large;
+      padding: 20px;
+    }
+  }
+}
