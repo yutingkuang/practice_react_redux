@@ -3,11 +3,12 @@ import React, { PureComponent } from 'react';
 import { Dispatch, Store } from '../../core/container/hoc';
 import { applyStyles } from '../../core/css-module';
 import style from './assets/stylesheets/style.scss';
+
 /* constants */
 import { STORE_KEY } from './constant';
 
 /* actions */
-import { fetchAlbumsByUser } from './action';
+import { fetchAlbumsByUser, fetchUserById } from './action';
 
 /* helper */
 import { ArrayEqual } from '~/helpers/equal';
@@ -22,25 +23,28 @@ export class View extends PureComponent<void, Props, void> {
     /* 渲染前就撈成員資料 */
     const { match } = this.props;
     const userId = parseInt(match.params.userId);
-    this.props.dispatch([fetchAlbumsByUser(userId)]);
+    this.props.dispatch([fetchAlbumsByUser(userId), fetchUserById(userId)]);
   }
 
   render() {
-    const albums = this.props.storeData;
+    const { albums, user: { name } } = this.props.storeData;
     return (
       <div styleName="container">
+        <h5 styleName="pull-left">
+          <a href="/user">go back</a>
+        </h5>
         <div styleName="page-header">
-          <h1 styleName="text-center">123</h1>
+          <h1 styleName="text-center album-page-title">{`${name}'s Albums`}</h1>
         </div>
         <div styleName="children-list">
-          {albums.map((album, i) => (
-            <div key={i} styleName="album">
-              <span styleName="icon glyphicon glyphicon-folder-close icon" />
-              <span styleName="album-title">
-                {album.title.length < 25
-                  ? album.title
-                  : `${album.title.slice(0, 25)}...`}
-              </span>
+          {albums.map(({ title, id, userId }) => (
+            <div key={`album-${userId}-${id}`} styleName="album">
+              <a href={`/album/${userId}/${id}`}>
+                <span styleName="icon glyphicon glyphicon-folder-close icon" />
+                <span styleName="album-title">
+                  {title.length < 25 ? title : `${title.slice(0, 25)}...`}
+                </span>
+              </a>
             </div>
           ))}
         </div>

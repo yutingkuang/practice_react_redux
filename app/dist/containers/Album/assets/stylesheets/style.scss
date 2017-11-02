@@ -9,6 +9,7 @@
       color: darkturquoise;
     }
     .album-title {
+      font-family: 'Architects Daughter';
       position: absolute;
       left: -10px;
       top: -100px;
@@ -17,4 +18,20 @@
       padding: 20px;
     }
   }
+}
+
+.album-page-title {
+  font-family: 'Architects Daughter';
+}
+
+/* latin */
+@font-face {
+  font-family: 'Architects Daughter';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Architects Daughter Regular'), local('ArchitectsDaughter-Regular'),
+    url(https://fonts.gstatic.com/s/architectsdaughter/v8/RXTgOOQ9AAtaVOHxx0IUBBoTIN0je7AiOLXaVBr1ByU.woff2)
+      format('woff2');
+  unicode-range: U+0000-00ff, U+0131, U+0152-0153, U+02c6, U+02da, U+02dc,
+    U+2000-206f, U+2074, U+20ac, U+2212, U+2215;
 }

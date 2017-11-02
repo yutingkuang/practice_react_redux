@@ -7,8 +7,10 @@ export const MugShot: any = (props: any) => {
   const { user: { id, name, photo } } = props;
   return (
     <div styleName="mugshot">
-      <img src={photo} styleName="img-rounded" alt={name} />
-      <span>{name}</span>
+      <a href={`/album/${id}`}>
+        <img src={photo} styleName="img-rounded" alt={name} />
+        <span>{name}</span>
+      </a>
     </div>
   );
 };
