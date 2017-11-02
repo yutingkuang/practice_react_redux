@@ -39,7 +39,6 @@ export function fetchApi(api: string, ...args: Array<any>): SagaAction {
   _validate(api, ...args);
   /* 撈出指定的 request */
   const { method, url, body = null, other } = apiSet[api](...args);
-  console.log('fetchApi', api, other);
   if (other) return fetchOtherApi(api, args);
   /* 產出 saga action 格式 */
   return {
@@ -67,7 +66,6 @@ export function fetchApi(api: string, ...args: Array<any>): SagaAction {
  * @returns {{type: ACTION, payload: {api: string, stream: Promise<*>}}}
  */
 export function fetchOtherApi(api: string, ...args: Array<any>): SagaAction {
-  console.log('fetchOtherApi', api);
   /* 錯誤檢查 */
   _validate(api, ...args);
   /* 撈出指定的 request */
