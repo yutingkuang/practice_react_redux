@@ -4,7 +4,7 @@ import {
   API_ALBUM_GET_BY_ID,
   API_ALBUM_GET_ALL
 } from './constant';
-import { replace, toQuery, toString } from '~/helpers/api-params';
+import { toQuery } from '~/helpers/api-params';
 
 export default {
   [API_ALBUM_GET_ALL]: () => ({
