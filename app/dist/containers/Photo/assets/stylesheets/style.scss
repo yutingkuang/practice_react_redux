@@ -1,0 +1,17 @@
+.container-fluid {
+  background: gray;
+}
+.content {
+  background: white;
+}
+
+.children-list {
+  .album {
+    display: inline;
+    position: relative;
+    margin: 20px;
+    img {
+      margin: 20px;
+    }
+  }
+}
