@@ -6,7 +6,6 @@ import { map } from 'ramda';
 export default (state: Store = [], action: Action): Store => {
   switch (action.type) {
     case USER_LIST_GET:
-      console.log('USER_LIST_GET', state, action.payload);
       if (state.length === 0) return action.payload;
       else
         return state.map((x, i) => {
@@ -18,7 +17,6 @@ export default (state: Store = [], action: Action): Store => {
         });
 
     case USER_PHOTO_GET:
-      console.log('USER_PHOTO_GET', state, action.payload);
       if (state.length === 0) return action.payload;
       else
         return state.map((x, i) => {

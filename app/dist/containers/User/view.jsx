@@ -33,7 +33,7 @@ export class View extends PureComponent<void, Props, void> {
         <div styleName="page-header">
           <h1 styleName="text-center">Users</h1>
         </div>
-        <div styleName="user-list">
+        <div styleName="children-list">
           {users.map(user => (
             <MugShot key={`user-photo-${user.id}`} user={user} />
           ))}
