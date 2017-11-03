@@ -60,6 +60,11 @@ export type Store = {
 /**
  * 4. component
  */
+export type State = {
+  lightboxIsOpen: boolean,
+  currentImage: number
+};
+
 type MatchProps = {
   match: {
     params: {
