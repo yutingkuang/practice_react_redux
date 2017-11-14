@@ -16,8 +16,8 @@ export default {
   [USER_GET]: function*(res: Array<User>) {
     yield put(
       saveList(
-        res.map(x => {
-          return { ...x, photo: '' };
+        res.map(user => {
+          return { ...user, photo: '' };
         })
       )
     );

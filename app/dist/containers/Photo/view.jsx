@@ -33,9 +33,9 @@ export class View extends PureComponent<void, Props, State> {
     const { userId, albumId } = match.params;
 
     this.props.dispatch([
-      fetchPhotosByAlbum(parseInt(albumId)),
-      fetchUserById(parseInt(userId)),
-      fetchAlbumById(parseInt(albumId))
+      fetchPhotosByAlbum(+albumId),
+      fetchUserById(+userId),
+      fetchAlbumById(+albumId)
     ]);
   }
 
