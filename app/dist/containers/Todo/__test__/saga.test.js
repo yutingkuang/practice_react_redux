@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 import { put } from 'redux-saga/effects';
-import { TODO_GET_ALL, TODO_GET_BY_USER } from '~/api/todo/constant';
+import { TODO_GET_BY_USER } from '~/api/todo/constant';
 import * as action from '../action';
 import Saga from '../saga';
 
