@@ -41,7 +41,6 @@ export default class View extends PureComponent<void, Props, State> {
   };
 
   render() {
-    // console.log('todocom',this.props);
     const { todo, todo: { title, completed }, removeHandler } = this.props;
     const { modify } = this.state;
     return (

@@ -1,0 +1,21 @@
+.container-fluid {
+  background: #bbbbbb;
+}
+.content {
+  background: white;
+}
+
+.children-list {
+  .album {
+    display: inline;
+    position: relative;
+    margin: 20px;
+    img {
+      margin: 20px;
+    }
+  }
+}
+
+.page-title {
+  padding: 15px;
+}

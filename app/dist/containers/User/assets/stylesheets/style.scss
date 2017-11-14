@@ -1,0 +1,31 @@
+.children-list {
+  padding: 10%;
+}
+
+.mugshot {
+  display: inline;
+  position: relative;
+  img {
+    margin: 20px;
+    width: 100px;
+  }
+  span {
+    position: absolute;
+    top: -10px;
+    left: 0px;
+    text-align: center;
+    width: 100px;
+    margin-left: 20px;
+    color: white;
+    font-weight: bold;
+    font-size: smaller;
+    background: rgba(0, 0, 0, 0.62);
+    padding: 7px;
+    display: none;
+  }
+}
+.mugshot:hover {
+  span {
+    display: block;
+  }
+}

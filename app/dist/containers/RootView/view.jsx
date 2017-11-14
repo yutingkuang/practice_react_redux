@@ -7,6 +7,6 @@ import style from './assets/stylesheets/style.scss';
 export default class Root extends PureComponent {
   render() {
     const { children } = this.props;
-    return <div styleName="container">{children}</div>;
+    return <div>{children}</div>;
   }
 }

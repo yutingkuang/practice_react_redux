@@ -1,7 +1,5 @@
 [ignore]
-.*/node_modules/.*
 ./output/.*
-
 
 [libs]
 ./flow-typed
