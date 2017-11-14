@@ -1,7 +1,7 @@
 /* @flow */
 import React, { Component } from 'react';
 import { Dispatch, Store } from '../../core/container/hoc';
-import { applyStyles } from '../../core/css-module';
+import { applyStylesInline } from '../../core/css-module';
 import style from './assets/stylesheets/style.scss';
 
 /* constants */
@@ -20,7 +20,6 @@ import { compose, times, identity } from 'ramda';
 /* type */
 import type { Props, State, Post } from './type';
 
-@applyStyles(style)
 export class View extends Component<void, Props, State> {
   props: Props;
   state: State = {
@@ -99,7 +98,7 @@ export class View extends Component<void, Props, State> {
         <div styleName="page-header">
           <div styleName="pull-right">
             <nav aria-label="Page navigation">
-              <ul styleName="pagination paging perpage">
+              <ul styleName="pagination paging perpage" className="perpage">
                 {perItemList.map(n => (
                   <li key={`${n}-per-page`}>
                     <a
@@ -124,7 +123,7 @@ export class View extends Component<void, Props, State> {
           </div>
           <div styleName="center">
             <nav aria-label="Page navigation">
-              <ul styleName="pagination paging">
+              <ul styleName="pagination paging" className="paging">
                 <li styleName={nowPage === 1 ? 'hidden' : ''}>
                   <a aria-label="First" onClick={this.setPage(1)}>
                     <i styleName="fa fa-angle-double-left" aria-hidden="true" />
@@ -166,4 +165,6 @@ export class View extends Component<void, Props, State> {
   }
 }
 
-export default compose(Dispatch, Store(STORE_KEY))(View);
+export default compose(Dispatch, Store(STORE_KEY), applyStylesInline(style))(
+  View
+);
