@@ -3,6 +3,7 @@ import React, { PureComponent } from 'react';
 import { Dispatch, Store } from '../../core/container/hoc';
 import { applyStyles } from '../../core/css-module';
 import style from './assets/stylesheets/style.scss';
+import { Link } from 'react-router-dom';
 
 /* constants */
 import { STORE_KEY } from './constant';
@@ -27,6 +28,7 @@ export class View extends PureComponent<void, Props, void> {
   }
 
   render() {
+    // console.log('album', this.props.storeData);
     const { albums, user: { name } } = this.props.storeData;
     return (
       <div styleName="container">
@@ -39,12 +41,12 @@ export class View extends PureComponent<void, Props, void> {
         <div styleName="children-list">
           {albums.map(({ title, id, userId }) => (
             <div key={`album-${userId}-${id}`} styleName="album">
-              <a href={`/album/${userId}/${id}`}>
+              <Link to={`/album/${userId}/${id}`}>
                 <span styleName="icon glyphicon glyphicon-folder-close icon" />
                 <span styleName="album-title">
                   {title.length < 25 ? title : `${title.slice(0, 25)}...`}
                 </span>
-              </a>
+              </Link>
             </div>
           ))}
         </div>

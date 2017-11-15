@@ -28,6 +28,7 @@ export class View extends PureComponent<void, Props, void> {
 
   render() {
     const users = this.props.storeData;
+    console.log(users);
     return (
       <div styleName="container">
         <div styleName="page-header">
@@ -35,7 +36,12 @@ export class View extends PureComponent<void, Props, void> {
         </div>
         <div styleName="children-list">
           {users.map(user => (
-            <MugShot key={`user-photo-${user.id}`} user={user} />
+            <MugShot
+              key={`user-photo-${user.id}-${Math.random()
+                .toString(36)
+                .substring(8)}`}
+              user={user}
+            />
           ))}
         </div>
       </div>

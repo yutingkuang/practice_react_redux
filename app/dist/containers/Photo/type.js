@@ -1,7 +1,7 @@
 /* @flow */
 import type { DispatchProps } from '../../core/container/hoc/dispatch';
 import type { StoreProps } from '../../core/container/hoc/store.jsx';
-
+import type { Store as AlbumStore } from '../Album/type';
 /**
  * 2. constant type
  */
@@ -74,4 +74,7 @@ type MatchProps = {
   }
 };
 
-export type Props = DispatchProps & StoreProps<Store> & MatchProps;
+export type Props = DispatchProps &
+  StoreProps<Store> &
+  MatchProps &
+  StoreProps<Store>;
