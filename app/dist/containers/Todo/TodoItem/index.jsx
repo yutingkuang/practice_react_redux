@@ -1,12 +1,11 @@
 import React, { Component, PureComponent } from 'react';
-import { applyStyles } from '../../../core/css-module';
+import { applyStylesInline } from '../../../core/css-module';
 import style from './stylesheets/style.scss';
 /* type */
 import type { TodoItem } from '../type';
 import type { State } from './type';
 
-@applyStyles(style)
-export default class View extends PureComponent<void, Props, State> {
+export class View extends PureComponent<void, Props, State> {
   state: State = {
     modify: false
   };
@@ -77,3 +76,5 @@ export default class View extends PureComponent<void, Props, State> {
     );
   }
 }
+
+export default applyStylesInline(style)(View);

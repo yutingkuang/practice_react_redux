@@ -1,7 +1,7 @@
 /* @flow */
 import React, { Component } from 'react';
 import { Dispatch, Store } from '../../core/container/hoc';
-import { applyStyles } from '../../core/css-module';
+import { applyStylesInline } from '../../core/css-module';
 import style from './assets/stylesheets/style.scss';
 /* constants */
 import { STORE_KEY } from './constant';
@@ -19,7 +19,6 @@ import { compose } from 'ramda';
 /* type */
 import type { Props, State, TodoItem } from './type';
 
-@applyStyles(style)
 export class View extends Component<void, Props, State> {
   props: Props;
   state: State = {
@@ -86,7 +85,7 @@ export class View extends Component<void, Props, State> {
             placeholder="What needs to be done?"
             onKeyPress={this.insertHandler}
           />
-          <ul styleName="todo-list">
+          <ul styleName="todo-list" className="todo-list">
             {todos.length > 0 ? (
               todos.map(todo => (
                 <TodoComp
@@ -106,4 +105,6 @@ export class View extends Component<void, Props, State> {
   }
 }
 
-export default compose(Dispatch, Store(STORE_KEY))(View);
+export default compose(Dispatch, Store(STORE_KEY), applyStylesInline(style))(
+  View
+);
